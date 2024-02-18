@@ -1,0 +1,53 @@
+server:
+  port: 8888
+  servlet:
+    context-path: /hk
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1/boot?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      minimum-idle: 10
+      connection-timeout: 2000
+      maximum-pool-size: 100
+      auto-commit: true
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+      max-lifetime: 100000
+      idle-timeout: 500000
+
+  data:
+    redis:
+      database: 0
+      host: 127.0.0.1
+      port: 6379
+
+mybatis-plus:
+  mapper-locations: "classpath*:/mapper/*.xml"
+  type-aliases-package: com.lc.hk.entity
+  configuration:
+    map-underscore-to-camel-case: true
+logging:
+  level:
+    com.lc.hk.mapper: debug
+
+# minio文件上传
+minio:
+  endpoint: http://127.0.0.1
+  accessKey: minioadmin
+  secretKey: minioadmin
+
+minio-view:
+  endpoint: http://127.0.0.1
+  accessKey: minioadmin
+  secretKey: minioadmin
+
+imgPath: C:\\ehs\\img\\
+jobCorm: "0 0 */30 * * *"
